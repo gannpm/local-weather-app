@@ -1,3 +1,4 @@
+
 {
   "name": "localcast-weather",
   "version": "1.0.0",
@@ -5,16 +6,22 @@
   "__comment": {
     "purpose": "previous lines in scripts section",
     "start": "ng serve --port 5000",
-    "build": "ng build" 
+    "build": "ng build"
   },
-
+  "config": {
+    "imageRepo": "gannpm/weatherApp",
+    "imageName": "local-weather-app",
+    "imagePort": "0000"
+  },
   "scripts": {
     "ng": "ng",
     "start": "npm run standardize && ng serve --port 5000",
-    "build": "npm run standardize && ng build",    "test": "ng test",
+    "build": "npm run standardize && ng build",
+    "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "standardize": "prettier **/*.ts --write"
+    "standardize": "prettier **/*.ts --write",
+    "test:debug": "ng test --sourcemaps=false"
   },
   "prettier": {
     "printWidth": 90,

@@ -7,8 +7,8 @@
 
 export const environment = {
   production: false,
-  appid: '5c5f6d33f5f09b1254f46763f45a203e',
-  baseUrl: 'http://',
+  appId: '5c5f6d33f5f09b1254f46763f45a203e',
+  baseUrl: 'https://',
 }
 
 /*
