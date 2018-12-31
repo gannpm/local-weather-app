@@ -1,11 +1,6 @@
 {
   "name": "localcast-weather",
   "version": "1.0.0",
-  "//b comments - // with a letter": {
-    "purpose": "previous lines in scripts section",
-    "start": "ng serve --port 5000",
-    "build": "ng build"
-  },
   "config": {
     "imageRepo": "gannpm/weatherApp",
     "imageName": "local-weather-app",
@@ -13,16 +8,18 @@
   },
   "scripts": {
     "ng": "ng",
+    "__start": "ng serve --port 5000",
     "start": "npm run standardize && ng serve --port 5000",
+    "__build": "ng build",
     "build": "npm run standardize && ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "standardize": "prettier **/*.ts --write",
     "test:debug": "ng test --sourcemaps=false",
+    "predocker:build": "npm run build",
+    "__predocker:build": "npm run build -- --prod --output-path dist && npm test -- --watch=false && npm run e2e",
     "docker:build": "cross-conf-env docker image build . -t $npm_package_config_imageRepo:$npm_package_version",
-    "//a predocker:build": "npm run build",
-    "predocker:build": "npm run build -- --prod --output-path dist && npm test -- --watch=false && npm run e2e",
     "postdocker:build": "npm run docker:tag",
     "docker:tag": " cross-conf-env docker image tag _version $npm_package_config_imageRepo:latest $npm_package_config_imageRepo:$npm_package_version $npm_package_config_imageRepo:latest",
     "docker:run": "run-s -c docker:clean docker:runHelper",
@@ -35,7 +32,7 @@
     "docker:open:win": "echo Trying to launch on Windows && timeout 2 && start http://localhost:%npm_package_config_imagePort%",
     "docker:open:mac": "echo Trying to launch on MacOS && sleep 2 && URL=http://localhost:$npm_package_config_imagePort && open $URL",
     "predocker:debug": "run-s docker:build docker:run",
-    "docker:debug": "run-s -cs docker:open:win docker:open:mac docker:taillogs",
+    "docker:debug": "run-s -cs docker:open:win docker:open:mac docker:taillogs"
   },
   "prettier": {
     "printWidth": 90,
